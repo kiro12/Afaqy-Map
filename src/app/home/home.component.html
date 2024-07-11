@@ -1,0 +1,55 @@
+<div class=" p-5">
+  <h1 class="text-center mt-2">Main Task</h1>
+  <div class="form-group row">
+    <div class="col-12 my-3">
+      <input type="text" class="form-control" placeholder="Search Vehicle" #searchInput>
+
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-12 px-2">
+      <div class="map-container">
+        <p-table class="table-container" [value]="units" [tableStyle]="{ 'min-width': '50rem' }">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>id</th>
+              <th>Vehicle Name</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th>actions</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-unit>
+            <tr >
+              <td>{{ unit.id }}</td>
+              <td>{{ unit.name }}</td>
+              <td>{{ unit.latitude }}</td>
+              <td>{{ unit.longitude }}</td>
+              <td>
+                <img (click)="showHideMarker(unit)" *ngIf="!unit.isHidden" src="assets/images/eye-thin.svg" alt="">
+                <img (click)="showHideMarker(unit)" *ngIf="unit.isHidden" src="assets/images/iconmonstr-eye-off-thin.png" alt="">
+              </td>
+
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="6">No units found.</td>
+            </tr>
+          </ng-template>
+        </p-table>
+
+        <div leaflet style="width: 100%; height: 400px;"
+             [leafletOptions]="options"
+             [leafletLayers]="markers"
+        >
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <app-map></app-map>
+
+</div>
+

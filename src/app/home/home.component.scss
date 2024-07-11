@@ -1,0 +1,21 @@
+
+.map-container{
+  position:relative;
+  .table-container{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    margin: 10px auto;
+
+    th ,  tr{
+      border: 1px solid #e2e8f0;
+    }
+    td{
+      text-align: center;
+      img{
+        width:30px;
+        cursor:pointer;
+      }
+    }
+  }
+}
